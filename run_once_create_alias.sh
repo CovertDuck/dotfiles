@@ -3,24 +3,10 @@
 echo "alias ll='ls -al'" >> ~/.aliases
 echo "alias la='ls -A'" >> ~/.aliases
 
-# Get lazygit and lazydocker and set them in ~/.ocal/bin
+# Install go
+sudo apt-get install golang-go
 
-# Get lazygit
-curl -s https://api.github.com/repos/jesseduffield/lazygit/releases/latest \
-| grep "browser_download_url.*linux_amd64.tar.gz" \
-| cut -d : -f 2,3 \
-| tr -d \" \
-| wget -qi -
-
-tar -xvf lazygit*.tar.gz
-mv lazygit ~/.local/bin
-
-# Get lazydocker
-curl -s https://api.github.com/repos/jesseduffield/lazydocker/releases/latest \
-| grep "browser_download_url.*linux_amd64.tar.gz" \
-| cut -d : -f 2,3 \
-| tr -d \" \
-| wget -qi -
-
-tar -xvf lazydocker*.tar.gz
-mv lazydocker ~/.local/bin
+# Install lazy*
+go install github.com/jesseduffield/lazygit@latest
+go install github.com/jesseduffield/lazynpm@latest
+go install github.com/jesseduffield/lazydocker@latest
